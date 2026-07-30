@@ -3,6 +3,21 @@ name: "Estrutura de diretórios e arquivos"
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        description: "Ambiente de execução"
+        required: true
+        default: "producao"
+        type: choice
+        options:
+          - producao
+          - homologacao
+          - dev
+      mensagem:
+        description: "Mensagem customizada"
+        required: false
+        type: string
 
 env:
   NODE_VERSION: '18'
