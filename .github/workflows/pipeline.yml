@@ -1,0 +1,40 @@
+name: Hello GH actions
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  hello-job:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Executar o Hello World
+        run: echo "Hello World GH actions"
+
+      - name: Mostrar informações do SO
+        run: |
+          echo "SO: ${{  runner.os  }}"
+          echo "Diretório: $(pwd)"
+          echo "Data: $(date)"
+          echo "Usuário: $(whoami)"
+      
+      - name: Listar arquivos do diretório 
+        run: |
+            echo "Arquivos do diretório:"
+            ls -la
+      
+      - name: Comandos múltiplos
+        run: |
+          echo "Executando múltiplos comandos"
+          echo "workflow executado com suceso"
+          echo "Pronto para os próximos passos"
+          
